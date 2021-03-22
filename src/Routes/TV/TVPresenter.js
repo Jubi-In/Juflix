@@ -5,7 +5,8 @@ import Section from "../../Components/Section";
 import Loader from "Components/Loader";
 
 const Container = styled.div`
-    padding: 10px;`;
+    padding: 0px 20px;
+`;
 
 const TVPresenter = ({ topRated, popular, airingToday, loading, error }) =>
     loading ? (

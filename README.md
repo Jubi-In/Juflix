@@ -36,3 +36,6 @@ Learning React and ES6 by building a Movie Discovery App.
 
 3. 6.1 children
 - react prop. 
+
+4. 2.1 Fragment
+- 원하는 만큼 컴포턴트를 리턴하게 해 준다. <> </>
