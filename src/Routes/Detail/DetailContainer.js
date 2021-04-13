@@ -8,6 +8,7 @@ export default class DetailContainer extends React.Component {
         const { location: { pathname } } = props;
         this.state = {
             result: null,
+            cast: null,
             error: null,
             loading: true,
             isMovie: pathname.includes("/movie/")
@@ -27,22 +28,25 @@ export default class DetailContainer extends React.Component {
             return push("/");
         }
         let result = null;
+        let cast = null;
         try {
             if(isMovie) {
                 ({ data: result } = await moviesApi.movieDetail(parsedId));
+                console.log(moviesApi.cast(parsedId));
             } else {
                 ({ data: result } = await tvApi.showDetail(parsedId));
-                console.log(result);
+                ({ data: cast } = await tvApi.cast(parsedId));
+                console.log(cast);
             }
         } catch {
             this.setState( { error: "Can't find"});
         } finally {
-            this.setState({ loading: false, result })
+            this.setState({ loading: false, result, cast })
         }
     }
 
     render() {
-        const { result, error, loading } = this.state;
-        return <DetailPresenter result={result} error={error} loading={loading} />;
+        const { result, cast, error, loading } = this.state;
+        return <DetailPresenter result={result} cast={cast} error={error} loading={loading} />;
     }
 }

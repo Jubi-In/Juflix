@@ -22,7 +22,8 @@ export const moviesApi = {
             params: {
                 query: term
             }
-        })
+        }),
+    cast: id => api.get(`/movie/${id}/credits`)
 }
 
 export const tvApi = {
@@ -39,5 +40,6 @@ export const tvApi = {
             params: {
                 query: term
             }
-        })
+        }),
+    cast: id => api.get(`/tv/${id}/credits`)
 }
